@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b78">
+<title>HAWAKUM — Personal Login</title>
+<style>
+:root{--navy:#102746;--blue:#1769ff;--blue2:#0f52d6;--bg:#f3f6fc;--text:#17243a;--muted:#6b7890;--line:#e2e9f4;--white:#fff;--green:#0e9f6e;--red:#dc3545}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.auth-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#fff}.hero{background:linear-gradient(145deg,#09203fdd,#164f9bdd),radial-gradient(circle at 20% 20%,#4b92ff,transparent 40%);color:#fff;padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff24;border-radius:50%;right:-140px;bottom:-120px;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05}.brand{display:flex;align-items:center;gap:12px;font-size:25px;font-weight:800;letter-spacing:.4px}.brand-mark{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#fff;color:var(--blue);font-size:25px;font-weight:900}.hero h1{font-size:clamp(32px,4vw,52px);line-height:1.12;margin:25px 0 15px;max-width:550px}.hero p{font-size:16px;line-height:1.8;color:#e1ebff;max-width:460px}.hero-points{display:grid;gap:14px;margin-top:30px}.hero-point{display:flex;gap:12px;align-items:center;color:#f4f7ff}.check{width:28px;height:28px;border-radius:9px;background:#ffffff1d;display:grid;place-items:center}.hero-foot{font-size:12px;color:#d0ddf3;margin-top:35px}.auth-side{display:flex;align-items:center;justify-content:center;padding:30px 20px}.auth-card{width:min(100%,430px);padding:34px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 55px #193b6810}.auth-card h2{margin:0 0 8px;font-size:27px}.sub{margin:0 0 25px;color:var(--muted);font-size:14px;line-height:1.6}.field{margin:16px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input,.field textarea,.search{width:100%;border:1px solid #dbe3ef;border-radius:11px;padding:12px 13px;outline:none;background:#fff;color:var(--text)}.field input:focus,.field textarea:focus,.search:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769ff15}.row-between{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px}.link{color:var(--blue);background:none;border:0;padding:0;font-weight:700}.btn{border:0;border-radius:11px;padding:12px 16px;background:var(--blue);color:#fff;font-weight:750;transition:.15s}.btn:hover{background:var(--blue2)}.btn.full{width:100%;margin-top:14px}.btn.secondary{background:#eaf1ff;color:#174eaf}.btn.danger{background:#fff0f1;color:#b42332}.msg{font-size:13px;margin-top:12px;line-height:1.5}.msg.error{color:var(--red)}.msg.ok{color:var(--green)}.switch{text-align:center;color:var(--muted);font-size:13px;margin-top:23px}.demo-box{margin-top:20px;background:#f5f8ff;border:1px dashed #c8d8f6;padding:12px;border-radius:12px;font-size:12px;line-height:1.8;color:#4b5d78}.demo-box strong{color:#173c77}.app{min-height:100vh}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.topbrand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:20px}.topbrand .brand-mark{width:35px;height:35px;border-radius:10px;font-size:20px;background:#eaf1ff}.top-actions{display:flex;align-items:center;gap:12px}.avatar{width:38px;height:38px;border-radius:50%;background:#dce9ff;color:#164caa;display:grid;place-items:center;font-weight:800}.layout{display:grid;grid-template-columns:235px 1fr;min-height:calc(100vh - 72px)}.sidebar{background:var(--navy);padding:22px 14px;color:#d7e4fa}.side-label{text-transform:uppercase;letter-spacing:1.3px;font-size:10px;color:#91a9cd;margin:10px 12px 12px}.navbtn{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:0;background:transparent;color:#d7e4fa;padding:12px;border-radius:10px;margin:4px 0;font-weight:650}.navbtn.active,.navbtn:hover{background:#1c5ee4;color:#fff}.main{padding:30px;min-width:0}.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}.welcome h1{font-size:28px;margin:0 0 5px}.welcome p{margin:0;color:var(--muted);font-size:14px}.badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:20px;background:#e6f8f0;color:#087c52;font-size:12px;font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.stat small{display:block;color:var(--muted);font-weight:650;margin-bottom:10px}.stat strong{font-size:27px}.stat-icon{float:right;width:38px;height:38px;border-radius:11px;background:#eaf1ff;display:grid;place-items:center;color:var(--blue)}.grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}.panel h3{margin:0 0 6px;font-size:17px}.panel .sub{margin-bottom:17px}.profileline{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid var(--line)}.profileline:last-child{border-bottom:0}.profileline .avatar{width:45px;height:45px}.muted{color:var(--muted);font-size:13px}.note{border:1px solid var(--line);padding:13px;border-radius:12px;margin:10px 0}.note strong{display:block;margin-bottom:4px}.note p{margin:0;white-space:pre-wrap;font-size:13px;color:#59677d;line-height:1.6}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.panel-head h2{margin:0;font-size:21px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:540px;font-size:13px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px}.role{display:inline-block;padding:5px 8px;border-radius:20px;background:#eaf1ff;color:#174eaf;font-weight:750;font-size:11px}.role.admin{background:#f0e9ff;color:#713ac7}.empty{color:var(--muted);text-align:center;padding:25px;font-size:14px}.notice{background:#fff8e7;border:1px solid #f7e3a7;color:#765516;padding:12px 14px;border-radius:12px;font-size:12px;line-height:1.6;margin-top:18px}.toast{position:fixed;right:18px;bottom:18px;background:#102746;color:#fff;padding:13px 18px;border-radius:12px;box-shadow:0 10px 30px #0002;z-index:20;max-width:calc(100% - 36px);font-size:14px}.footer{text-align:center;color:#8995a8;font-size:12px;padding:18px}
+@media(max-width:800px){.auth-wrap{grid-template-columns:1fr}.hero{display:none}.auth-side{min-height:100vh;background:linear-gradient(150deg,#edf4ff,#f8faff);padding:18px}.auth-card{padding:26px 22px}.layout{grid-template-columns:1fr}.sidebar{display:flex;gap:5px;padding:9px;overflow:auto;position:sticky;top:72px;z-index:4}.side-label{display:none}.navbtn{white-space:nowrap;width:auto;margin:0;padding:10px 12px;font-size:12px}.main{padding:18px 14px}.topbar{padding:0 15px;height:64px}.layout{min-height:calc(100vh - 64px)}.sidebar{top:64px}.welcome{align-items:flex-start;flex-direction:column}.welcome h1{font-size:24px}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:15px}.stat strong{font-size:23px}.grid2{grid-template-columns:1fr}.top-actions .user-email{display:none}.panel{padding:16px}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:390px){.stats{grid-template-columns:1fr}.auth-card h2{font-size:24px}}
+</style>
+</head>
+<body>
+<div id="authView" class="auth-wrap">
+  <section class="hero">
+    <div class="brand"><span class="brand-mark">H</span><span>HAWAKUM</span></div>
+    <div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;color:#a9c8ff">YOUR PERSONAL SPACE</div>
+      <h1>Everything you need.<br>One secure space.</h1>
+      <p>আপনার ব্যক্তিগত ড্যাশবোর্ডে স্বাগতম। সহজে আপনার প্রোফাইল, নোট ও অ্যাকাউন্ট পরিচালনা করুন।</p>
+      <div class="hero-points">
+        <div class="hero-point"><span class="check">✓</span><span>Simple and clean dashboard</span></div>
+        <div class="hero-point"><span class="check">✓</span><span>Personal notes in one place</span></div>
+        <div class="hero-point"><span class="check">✓</span><span>Designed for mobile and desktop</span></div>
+      </div>
+    </div>
+    <div class="hero-foot">© <span class="year"></span> HAWAKUM. All rights reserved.</div>
+  </section>
+  <section class="auth-side">
+    <div class="auth-card">
+      <div class="brand" style="color:#17345d;margin-bottom:28px"><span class="brand-mark" style="background:#eaf1ff">H</span><span>HAWAKUM</span></div>
+      <div id="loginForm">
+        <h2>Welcome back</h2><p class="sub">আপনার অ্যাকাউন্টে লগইন করুন।</p>
+        <form id="loginFormEl">
+          <div class="field"><label for="loginEmail">Email address</label><input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="username" required></div>
+          <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" placeholder="আপনার পাসওয়ার্ড" autocomplete="current-password" required></div>
+          <div class="row-between"><label style="display:flex;gap:7px;align-items:center"><input id="rememberMe" type="checkbox" style="width:auto"> Remember me</label><button class="link" type="button" data-view="forgot">Forgot password?</button></div>
+          <button class="btn full" type="submit">Login to HAWAKUM →</button><div id="loginMsg" class="msg"></div>
+        </form>
+        <div class="switch">নতুন এখানে? <button class="link" type="button" data-view="register">Create an account</button></div>
+        <div class="demo-box"><strong>Demo Login</strong><br>User: <code>user@hawakum.com</code><br>Password: <code>123456</code><br><strong>Demo Admin</strong><br><code>admin@hawakum.com</code> / <code>admin123</code></div>
+      </div>
+      <div id="registerForm" class="hidden">
+        <h2>Create account</h2><p class="sub">কয়েক সেকেন্ডে আপনার Demo অ্যাকাউন্ট তৈরি করুন।</p>
+        <form id="registerFormEl">
+          <div class="field"><label for="regName">Full name</label><input id="regName" type="text" placeholder="আপনার নাম" required maxlength="70"></div>
+          <div class="field"><label for="regEmail">Email address</label><input id="regEmail" type="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="regPassword">Password (কমপক্ষে 6 অক্ষর)</label><input id="regPassword" type="password" minlength="6" required></div>
+          <button class="btn full" type="submit">Create account</button><div id="registerMsg" class="msg"></div>
+        </form>
+        <div class="switch">অ্যাকাউন্ট আছে? <button class="link" type="button" data-view="login">Login</button></div>
+      </div>
+      <div id="forgotForm" class="hidden">
+        <h2>Reset password</h2><p class="sub">Demo mode-এ ইমেইল লিখে পাসওয়ার্ড পরিবর্তনের নির্দেশনা পাবেন।</p>
+        <form id="forgotFormEl"><div class="field"><label for="forgotEmail">Email address</label><input id="forgotEmail" type="email" placeholder="you@example.com" required></div><div class="field"><label for="newPassword">New demo password</label><input id="newPassword" type="password" minlength="6" placeholder="নতুন পাসওয়ার্ড" required></div><button class="btn full" type="submit">Reset password</button><div id="forgotMsg" class="msg"></div></form>
+        <div class="switch"><button class="link" type="button" data-view="login">← Back to Login</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="appView" class="app hidden">
+  <header class="topbar">
+    <div class="topbrand"><span class="brand-mark">H</span><span>HAWAKUM</span></div>
+    <div class="top-actions"><span id="topEmail" class="muted user-email"></span><div id="topAvatar" class="avatar">H</div><button id="logoutBtn" class="btn secondary" style="padding:9px 12px">Logout</button></div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-label">MAIN MENU</div>
+      <button class="navbtn active" data-page="dashboard">⌂ Dashboard</button>
+      <button class="navbtn" data-page="profile">♙ My Profile</button>
+      <button class="navbtn" data-page="notes">▤ My Notes</button>
+      <button class="navbtn admin-only hidden" data-page="admin">⚙ Admin Panel</button>
+    </aside>
+    <main class="main">
+      <section id="page-dashboard">
+        <div class="welcome"><div><h1 id="welcomeTitle">Welcome back!</h1><p>এখানে আপনার অ্যাকাউন্টের সংক্ষিপ্ত তথ্য দেখতে পারবেন।</p></div><span class="badge">● Demo account active</span></div>
+        <div class="stats">
+          <div class="stat"><span class="stat-icon">▤</span><small>My Notes</small><strong id="statNotes">0</strong></div>
+          <div class="stat"><span class="stat-icon">♙</span><small>Account Type</small><strong id="statRole" style="font-size:22px">User</strong></div>
+          <div class="stat"><span class="stat-icon">✓</span><small>Account Status</small><strong style="font-size:22px;color:var(--green)">Active</strong></div>
+        </div>
+        <div class="grid2">
+          <div class="panel"><h3>Account overview</h3><p class="sub">আপনার অ্যাকাউন্টের তথ্য</p><div class="profileline"><div class="avatar" id="overviewAvatar">H</div><div><strong id="overviewName">HAWAKUM User</strong><div class="muted" id="overviewEmail"></div></div></div><div class="profileline"><span style="font-size:22px">✉</span><div><strong>Email address</strong><div class="muted" id="overviewEmail2"></div></div></div><div class="profileline"><span style="font-size:22px">♙</span><div><strong>Role</strong><div class="muted" id="overviewRole">User</div></div></div></div>
+          <div class="panel"><div class="panel-head"><h3>Recent notes</h3><button class="link" data-page="notes">View all</button></div><div id="recentNotes"></div><button class="btn full" data-action="new-note">＋ Add a note</button></div>
+        </div>
+        <div class="notice">Demo সতর্কতা: এই সাইটের তথ্য এই ব্রাউজারেই সংরক্ষিত থাকে। অন্য ফোনে একই তথ্য স্বয়ংক্রিয়ভাবে দেখা যাবে না।</div>
+      </section>
+      <section id="page-profile" class="hidden">
+        <div class="welcome"><div><h1>My Profile</h1><p>আপনার ব্যক্তিগত তথ্য দেখুন ও পরিবর্তন করুন।</p></div></div>
+        <div class="panel" style="max-width:650px"><h3>Profile details</h3><p class="sub">নাম পরিবর্তন করলে Dashboard-এও আপডেট হবে।</p><form id="profileForm"><div class="field"><label for="profileName">Full name</label><input id="profileName" required maxlength="70"></div><div class="field"><label>Email address</label><input id="profileEmail" disabled></div><button class="btn" type="submit">Save changes</button><div id="profileMsg" class="msg"></div></form></div>
+      </section>
+      <section id="page-notes" class="hidden">
+        <div class="welcome"><div><h1>My Notes</h1><p>আপনার নোটগুলো লিখুন এবং সংরক্ষণ করুন।</p></div><button class="btn" data-action="new-note">＋ Add note</button></div>
+        <div class="panel"><form id="noteForm" class="hidden"><div class="field"><label for="noteTitle">Note title</label><input id="noteTitle" required maxlength="100" placeholder="যেমন: আমার পরিকল্পনা"></div><div class="field"><label for="noteBody">Details</label><textarea id="noteBody" rows="4" maxlength="3000" placeholder="নোট লিখুন..."></textarea></div><button class="btn" type="submit">Save note</button> <button id="cancelNote" class="btn secondary" type="button">Cancel</button></form><div id="allNotes"></div></div>
+      </section>
+      <section id="page-admin" class="hidden">
+        <div class="welcome"><div><h1>Admin Panel</h1><p>Demo ব্যবহারকারীদের তালিকা এবং পরিসংখ্যান।</p></div><span class="badge" style="background:#f0e9ff;color:#713ac7">Admin access</span></div>
+        <div class="stats"><div class="stat"><span class="stat-icon">♙</span><small>Total users</small><strong id="adminUsers">0</strong></div><div class="stat"><span class="stat-icon">▤</span><small>Total notes</small><strong id="adminNotes">0</strong></div><div class="stat"><span class="stat-icon">●</span><small>Mode</small><strong style="font-size:22px">Demo</strong></div></div>
+        <div class="panel"><div class="panel-head"><h2>User management</h2><input id="userSearch" class="search" style="max-width:260px" placeholder="Search name or email..."></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Notes</th><th>Action</th></tr></thead><tbody id="usersTable"></tbody></table></div><div class="notice">এটি শুধুই ডেমো অ্যাডমিন প্যানেল। এখানে প্রকৃত সার্ভার-সুরক্ষিত ব্যবহারকারী ব্যবস্থাপনা নেই।</div></div>
+      </section>
+      <div class="footer">© <span class="year"></span> HAWAKUM • Built for a better personal workspace</div>
+    </main>
+  </div>
+</div>
+<div id="toast" class="toast hidden"></div>
+<script>
+const DB_KEY='hawakum_demo_v1';
+const DEMO_USERS=[
+ {id:'demo-user',name:'HAWAKUM User',email:'user@hawakum.com',password:'123456',role:'user',notes:[]},
+ {id:'demo-admin',name:'HAWAKUM Admin',email:'admin@hawakum.com',password:'admin123',role:'admin',notes:[]}
+];
+let currentUserId=null;
+const $=id=>document.getElementById(id);
+function loadDB(){
+ try{let d=JSON.parse(localStorage.getItem(DB_KEY));if(d&&Array.isArray(d.users))return d}catch(e){}
+ return {users:DEMO_USERS.map(u=>({...u,notes:[]}))};
+}
+let db=loadDB();
+function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db))}
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function currentUser(){return db.users.find(u=>u.id===currentUserId)}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2600)}
+function showAuth(which='login'){
+ $('authView').classList.remove('hidden');$('appView').classList.add('hidden');
+ ['loginForm','registerForm','forgotForm'].forEach(id=>$(id).classList.add('hidden'));
+ $({login:'loginForm',register:'registerForm',forgot:'forgotForm'}[which]||'loginForm').classList.remove('hidden');
+}
+function showApp(){
+ const u=currentUser();if(!u){showAuth();return}
+ $('authView').classList.add('hidden');$('appView').classList.remove('hidden');
+ $('topEmail').textContent=u.email;$('topAvatar').textContent=(u.name||'H').trim().charAt(0).toUpperCase();
+ document.querySelectorAll('.admin-only').forEach(el=>el.classList.toggle('hidden',u.role!=='admin'));
+ document.querySelectorAll('.navbtn').forEach(el=>el.classList.toggle('hidden',el.classList.contains('admin-only')&&u.role!=='admin'));
+ $('welcomeTitle').textContent='Welcome, '+u.name+'!';
+ $('statNotes').textContent=u.notes.length;$('statRole').textContent=u.role==='admin'?'Admin':'User';
+ $('overviewName').textContent=u.name;$('overviewEmail').textContent=u.email;$('overviewEmail2').textContent=u.email;
+ $('overviewRole').textContent=u.role==='admin'?'Administrator':'Standard User';$('overviewAvatar').textContent=u.name.trim().charAt(0).toUpperCase();
+ $('profileName').value=u.name;$('profileEmail').value=u.email;
+ renderNotes();renderAdmin();
+}
+function goPage(page){
+ const u=currentUser();if(page==='admin'&&u?.role!=='admin')page='dashboard';
+ ['dashboard','profile','notes','admin'].forEach(p=>$('page-'+p).classList.toggle('hidden',p!==page));
+ document.querySelectorAll('.navbtn').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
+ if(page==='notes')renderNotes();if(page==='admin')renderAdmin();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showAuth(b.dataset.view)));
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>goPage(b.dataset.page)));
+document.querySelectorAll('[data-action="new-note"]').forEach(b=>b.addEventListener('click',()=>{goPage('notes');$('noteForm').classList.remove('hidden');$('noteTitle').focus()}));
+$('loginFormEl').addEventListener('submit',e=>{
+ e.preventDefault();const email=$('loginEmail').value.trim().toLowerCase(),pass=$('loginPassword').value;
+ const u=db.users.find(x=>x.email.toLowerCase()===email&&x.password===pass);
+ if(!u){$('loginMsg').className='msg error';$('loginMsg').textContent='ইমেইল বা পাসওয়ার্ড সঠিক নয়। Demo Login তথ্য ব্যবহার করে দেখুন।';return}
+ currentUserId=u.id;sessionStorage.setItem('hawakum_demo_session',u.id);$('loginMsg').textContent='';showApp();
+});
+$('registerFormEl').addEventListener('submit',e=>{
+ e.preventDefault();const name=$('regName').value.trim(),email=$('regEmail').value.trim().toLowerCase(),password=$('regPassword').value;
+ if(db.users.some(u=>u.email.toLowerCase()===email)){$('registerMsg').className='msg error';$('registerMsg').textContent='এই ইমেইল দিয়ে অ্যাকাউন্ট আছে। Login করুন।';return}
+ const u={id:'user-'+Date.now(),name,email,password,role:'user',notes:[]};db.users.push(u);saveDB();
+ $('registerMsg').className='msg ok';$('registerMsg').textContent='অ্যাকাউন্ট তৈরি হয়েছে! এখন লগইন করুন।';$('registerFormEl').reset();
+});
+$('forgotFormEl').addEventListener('submit',e=>{
+ e.preventDefault();const email=$('forgotEmail').value.trim().toLowerCase(),password=$('newPassword').value;
+ const u=db.users.find(x=>x.email.toLowerCase()===email);
+ if(!u){$('forgotMsg').className='msg error';$('forgotMsg').textContent='এই ইমেইলের অ্যাকাউন্ট পাওয়া যায়নি।';return}
+ u.password=password;saveDB();$('forgotMsg').className='msg ok';$('forgotMsg').textContent='Demo password পরিবর্তন হয়েছে। নতুন পাসওয়ার্ড দিয়ে লগইন করুন।';
+});
+$('logoutBtn').addEventListener('click',()=>{currentUserId=null;sessionStorage.removeItem('hawakum_demo_session');showAuth('login');toast('আপনি Logout করেছেন।')});
+$('profileForm').addEventListener('submit',e=>{e.preventDefault();const u=currentUser();if(!u)return;u.name=$('profileName').value.trim();saveDB();$('profileMsg').className='msg ok';$('profileMsg').textContent='প্রোফাইল আপডেট হয়েছে।';showApp();goPage('profile')});
+$('noteForm').addEventListener('submit',e=>{
+ e.preventDefault();const u=currentUser();if(!u)return;
+ const title=$('noteTitle').value.trim(),body=$('noteBody').value.trim();if(!title)return;
+ u.notes.unshift({id:'note-'+Date.now(),title,body,createdAt:new Date().toISOString()});saveDB();$('noteForm').reset();$('noteForm').classList.add('hidden');renderNotes();showApp();goPage('notes');toast('নোট সংরক্ষণ হয়েছে।');
+});
+$('cancelNote').addEventListener('click',()=>{$('noteForm').reset();$('noteForm').classList.add('hidden')});
+function renderNotes(){
+ const u=currentUser();if(!u)return;$('statNotes').textContent=u.notes.length;
+ const render=(notes,showDelete)=>notes.length?notes.map(n=>`<div class="note"><div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><strong>${escapeHTML(n.title)}</strong>${showDelete?`<button class="link" data-delete-note="${escapeHTML(n.id)}" aria-label="Delete note">Delete</button>`:''}</div><p>${escapeHTML(n.body||'No details added.')}</p><div class="muted" style="margin-top:8px">${new Date(n.createdAt).toLocaleDateString()}</div></div>`).join(''):'<div class="empty">এখনও কোনো নোট নেই। “Add note” চাপুন।</div>';
+ $('recentNotes').innerHTML=render(u.notes.slice(0,3),false);$('allNotes').innerHTML=render(u.notes,true);
+ document.querySelectorAll('[data-delete-note]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.deleteNote;const cu=currentUser();cu.notes=cu.notes.filter(n=>n.id!==id);saveDB();renderNotes();renderAdmin();toast('নোট মুছে ফেলা হয়েছে।')}));
+}
+function renderAdmin(){
+ const u=currentUser();if(!u||u.role!=='admin')return;
+ $('adminUsers').textContent=db.users.length;$('adminNotes').textContent=db.users.reduce((a,x)=>a+x.notes.length,0);
+ const q=($('userSearch').value||'').toLowerCase();
+ const users=db.users.filter(x=>(x.name+' '+x.email).toLowerCase().includes(q));
+ $('usersTable').innerHTML=users.map(x=>`<tr><td>${escapeHTML(x.name)}</td><td>${escapeHTML(x.email)}</td><td><span class="role ${x.role==='admin'?'admin':''}">${escapeHTML(x.role)}</span></td><td>${x.notes.length}</td><td>${x.id.startsWith('demo-')?'<span class="muted">Demo account</span>':`<button class="link" data-remove-user="${escapeHTML(x.id)}">Delete</button>`}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">কোনো ব্যবহারকারী পাওয়া যায়নি।</td></tr>';
+ document.querySelectorAll('[data-remove-user]').forEach(b=>b.addEventListener('click',()=>{if(!confirm('এই Demo ব্যবহারকারীকে মুছে ফেলবেন?'))return;db.users=db.users.filter(x=>x.id!==b.dataset.removeUser);saveDB();renderAdmin();toast('Demo ব্যবহারকারী মুছে ফেলা হয়েছে।')}));
+}
+$('userSearch').addEventListener('input',renderAdmin);
+document.querySelectorAll('.year').forEach(el=>el.textContent=new Date().getFullYear());
+const savedSession=sessionStorage.getItem('hawakum_demo_session');
+if(savedSession&&db.users.some(u=>u.id===savedSession)){currentUserId=savedSession;showApp()}else showAuth('login');
+</script>
+</body>
+</html>
